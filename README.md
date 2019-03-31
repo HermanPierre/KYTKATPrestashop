@@ -3,8 +3,7 @@ __!Attention : Durant tout le tuto, utilisez sudo pour toutes les commandes fait
 
 ##Commencez simplement par faire les mises a jour du systeme :
 
-sudo apt-get update && sudo apt-get upgrade
-
+`sudo apt-get update && sudo apt-get upgrade`
 
 
 installation de apache:
