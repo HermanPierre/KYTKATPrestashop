@@ -1,7 +1,7 @@
 __!Attention : Durant tout le tuto, utilisez sudo pour toutes les commandes faites dans le terminal.__
 
 
-##Commencez simplement par faire les mises a jour du systeme :
+## Commencez par faire les MAJ système:
 
 `sudo apt-get update && sudo apt-get upgrade`
 
