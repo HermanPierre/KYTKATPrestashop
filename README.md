@@ -84,13 +84,13 @@ Décompressez l'archive grace a la commande unzip :
 Actuellement pour le bon fonctionnement de Prestashop, il est conseillé d'installer PHP7.0.
 Suivez ces commandes pour installer PHP7.0 :
 
-`sudo add-apt-repository ppa:ondrej/php`
-`sudo apt-get update`
-`sudo apt-get install -y php7.0`
-`sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip`
-`sudo apt-get install php7.0-zip php7.0-simplexml`
-`sudo apt-get install php7.0-curl`
-`sudo a2enmod rewrite`
+`sudo add-apt-repository ppa:ondrej/php`  
+`sudo apt-get update`  
+`sudo apt-get install -y php7.0`  
+`sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip`  
+`sudo apt-get install php7.0-zip php7.0-simplexml`  
+`sudo apt-get install php7.0-curl`  
+`sudo a2enmod rewrite`  
 
 Redémarrez apache2 :
 
