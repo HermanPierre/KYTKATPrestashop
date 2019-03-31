@@ -1,7 +1,7 @@
-__underscores__!Attention : Durant tout le tuto, utilisez sudo pour toutes les commandes faites dans le terminal.__underscores__
+__!Attention : Durant tout le tuto, utilisez sudo pour toutes les commandes faites dans le terminal.__
 
 
-##titre Commencez simplement par faire les mises a jour du systeme :
+##Commencez simplement par faire les mises a jour du systeme :
 
 sudo apt-get update && sudo apt-get upgrade
 
