@@ -3,7 +3,7 @@ __!Attention : Durant tout le tuto, utilisez sudo pour toutes les commandes fait
 
 ### Commencez par faire les MAJ système :
 
-`sudo apt-get update && sudo apt-get upgrade`
+`sudo apt-get update & sudo apt-get upgrade`
 
 
 ### Installez Apache 2 et MariaDB :
@@ -19,21 +19,21 @@ Ensuite on lance l'installation sécurisée de MariaDB :
 Pour configurer apache2, on va utiliser le fichier de configuration basique téléchargé par défaut a l'installation de Apache2.
 On commence donc par le copier le fichier de config basique pour l'utiliser comme template:
 
-`sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/kytkat.conf`
+`sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/kytcat.conf`
 
-J'ai donc appelé ma configuration __kytkat.conf__
+J'ai donc appelé ma configuration __kytcat.conf__
 
 On va maintenant __editer le fichier de configuration que l'on viens de copier__:
 
 Ouvrez ce fichier avec votre editeur de texte préféré: 
 
-`/etc/apache2/sites-available/kytkat.conf`
+`/etc/apache2/sites-available/kytcat.conf`
 
 __Décommentez la ligne "ServerName"__ puis mettez `localhost` en URL.
 Pour __ServerAdmin__ mettez `webmaster@localhost`
-Et enfin, pour __DocumentRoot__ mettez le chemin du dossier qui contiendras les fichier du site internet, donc ceux de PrestaShop. Personnellement je met le dossier du site sur mon bureau :
+Et enfin, pour __DocumentRoot__ mettez le chemin du dossier qui contiendras les fichier du site internet, donc ceux de PrestaShop. Personnellement je met le dossier du site a ce chemin :
 
-`/home/lepipotron/Bureau/prestashop/`
+`/var/www/html/kytcat`
 
 On va donc maintenant dire a Apache2 de __prendre en compte notre nouvelle configuration__ et non pas l'ancienne.
 Pour cela on va utiliser les commandes :
@@ -42,14 +42,14 @@ Pour cela on va utiliser les commandes :
 
 Puis:
 
-`sudo a2ensite kytkat.conf`
+`sudo a2ensite kytcat.conf`
 
-Maintenant, nous devons autoriser l'accès de notre dossier serveur à Prestashop, retournez dans le fichier de configuration `kytkat.conf` et ajoutez ces lignes a la fin:
+Maintenant, nous devons autoriser l'accès de notre dossier serveur à Prestashop, retournez dans le fichier de configuration `kytcat.conf` et ajoutez ces lignes a la fin:
 
  `
-<Directory /var/www/html/example.com>
-    AllowOverride All
-</Directory>
+<Directory /var/www/html/example.com>  
+    AllowOverride All  
+</Directory>  
 `
 
 L'attribut __AllowOverride__ permet a prestashop d'avoir les droit en ecriture et lecture dans le dossier du serveur.
@@ -76,7 +76,7 @@ Si le numéro de version a la fin de la commande n'est pas le même, __remplacez
 
 Décompressez l'archive grace a la commande unzip :
 
-`sudo unzip prestashop_1.7.2.1.zip` (si vous n'avez pas unzip : `sudo apt-get install unzip`)
+`sudo unzip prestashop_1.7.5.1.zip` (si vous n'avez pas unzip : `sudo apt-get install unzip`)
 
 
 ### On va maintenant installer PHP7.0 :
@@ -87,9 +87,8 @@ Suivez ces commandes pour installer PHP7.0 :
 `sudo add-apt-repository ppa:ondrej/php`  
 `sudo apt-get update`  
 `sudo apt-get install -y php7.0`  
-`sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip`  
-`sudo apt-get install php7.0-zip php7.0-simplexml`  
-`sudo apt-get install php7.0-curl`  
+`sudo apt-get install -y php7.0 php7.0-fpm php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip php7.0-zip php7.0-simplexml php7.0-curl`  
+`sudo apt-get install php7.0-zip php7.0-simplexml php7.0-curl`  
 `sudo a2enmod rewrite`  
 
 Redémarrez apache2 :
@@ -104,15 +103,15 @@ Accedez a la console mySQL :
 
 On va donc créer une base de données avec la commande:
 
-`CREATE DATABASE kytkatDB;`
+`CREATE DATABASE kytcatDB;`
 
 Puis on créer un user :
 
-`CREATE USER 'kytkatUSER'@'localhost' IDENTIFIED BY 'kytkatMDP';`
+`CREATE USER 'kytcatUSER'@'localhost' IDENTIFIED BY 'kytcatMDP';`
 
 Et pour finir on donne tous les droits a cet utilisateur:
 
-`GRANT ALL ON kytkatDB.* TO 'kytkatUSER'@'localhost';`
+`GRANT ALL ON kytcatDB.* TO 'kytcatUSER'@'localhost';`
  
 puis on quitte la console mySQL avec `exit`;
 
@@ -122,28 +121,5 @@ puis on quitte la console mySQL avec `exit`;
 Vous n'avez plus qu'a vous rendre sur localhost et a suivre l'installateur de Prestashop.
 
 __Et voilà votre Prestashop est installé sur votre machine !__ 
-
-installation de apache:
-
-sudo apt-get install apache2 libapache2-mod-php mariadb-server
-sudo mysql_secure_installation
-sudo apt-get --reinstall install apache2-bin -y
-
-
-
-
-installation de php : 
-
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install -y php7.0
-install -y php7.0 php7.0-fpm php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
-apt-get install php7.0-zip php7.0-simplexml
-sudo apt-get install php7.0-curl
-
-
-Restart apache :
-
-sudo /etc/init.d/apache2 restart
 
 
